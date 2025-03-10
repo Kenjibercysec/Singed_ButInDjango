@@ -14,18 +14,19 @@
         </header>
 
         <div class="top-btns">
-            <a class="as" href="home.html"><button type="button" style="opacity: 70%;" class="button"> Consulta </button></a>
-            <a class="as" href="selecao.html"><button type="button" style=" opacity: 90%;" class="button">Cadastro</button></a>
+            <a class="as" href="{% url 'home' %}"><button type="button" style="opacity: 70%;" class="button"> Consulta </button></a>
+            <a class="as" href="{% url 'selecao' %}"><button type="button" style=" opacity: 90%;" class="button">Cadastro</button></a>
          </div>
 
-        <form class="form-section" id="cad-form" name="cad-form">
+        <form method="POST" action="{% url 'cadother' %}" class="form-section" id="cad-form" name="cad-form">
+            {% csrf_token %}
             <div class="form-group">
-                <input type="text" placeholder="Nº de tombamento" class="form-input">
-                <input type="text" placeholder="Marca" class="form-input">
-                <input type="text" placeholder="Funcionando?" class="form-input">
-                <input type="text" placeholder="Local atual do Dispositivo" class="form-input">
-                <input type="text" placeholder="Descrição" class="form-input desc">
-                <input type="date" placeholder="Data da análise" class="form-input">
+                <input type="text" name="id_tombamento" placeholder="Nº de tombamento" class="form-input">
+                <input type="text" name="marca" placeholder="Marca" class="form-input">
+                <input type="text" name="funcionando" placeholder="Funcionando?" class="form-input">
+                <input type="text" name="locat_do_disp" placeholder="Local atual do Dispositivo" class="form-input">
+                <input type="text" name="descricao" placeholder="Descrição" class="form-input desc">
+                <input type="date" name="data_de_an" placeholder="Data da análise" class="form-input">
                 <button type="submit" class="button">Selecionar</button>
             </div>
             <div class="form-group">

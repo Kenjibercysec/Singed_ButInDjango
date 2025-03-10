@@ -14,24 +14,24 @@
         </header>
 
         <div class="top-btns">
-            <a class="as" href="home.html"><button type="button" style="opacity: 70%;" class="button"> Consulta </button></a>
-            <a class="as" href="selecao.html"><button type="button" style=" opacity: 90%;" class="button">Cadastro</button></a>
+            <a class="as" href="{% url 'home' %}"><button type="button" style="opacity: 70%;" class="button"> Consulta </button></a>
+            <a class="as" href="{% url 'selecao' %}"><button type="button" style=" opacity: 90%;" class="button">Cadastro</button></a>
          </div>
 
         <div class="form-section">
-
-            <form method="GET" action="cadpc.html" class="form-group" id="deviceForm">
-                <select class="form-select" id="deviceType">
-                    <option value="" disabled selected>Tipo de dispositivo</option>
-                    <option value="computador">Computador</option>
-                    <option value="monitor">Monitor</option>
-                    <option value="impressora">Impressora</option>
-                    <option value="switch">Switch</option>
-                    <option value="scanner">Scanner</option>
-                    <option value="teclado">Teclado</option>
-                </select>
-                <button type="submit" class="button">Selecionar</button>
-            </form>
+            {% if dispositivo %}
+                <p><strong>Tipo de dispositivo:</strong> {{ dispositivo.tipo_de_disp }}</p>
+                <p><strong>Nº de tombamento:</strong> {{ dispositivo.id_tombamento }}</p>
+                <p><strong>Marca:</strong> {{ dispositivo.marca }}</p>
+                <p><strong>Quantidade de Armazenamento:</strong> {{ dispositivo.qnt_armaz }}</p>
+                <p><strong>Tipo de Armazenamento:</strong> {{ dispositivo.tipo_armaz }}</p>
+                <p><strong>Funcionando:</strong> {{ dispositivo.funcionando }}</p>
+                <p><strong>Local Atual do Dispositivo:</strong> {{ dispositivo.locat_do_disp }}</p>
+                <p><strong>Descrição:</strong> {{ dispositivo.descricao }}</p>
+                <p><strong>Data da Análise:</strong> {{ dispositivo.data_de_an }}</p>
+            {% else %}
+                <p>Item não encontrado.</p>
+            {% endif %}
         </div>
     </div>
 </body>
